@@ -17,10 +17,27 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Flutter App'),
+        title: Text('Expense'),
       ),
-      body: Center(
-        child: Text('Widget Playground!'),
+      body: Column(
+        children: [
+          Container(
+            width: double.infinity,
+            child: Card(
+              child: Text (
+                'This is Expense widget',
+              ),
+            ),
+          ),
+          Container(
+            width: double.infinity,
+            child: Card(
+              child: Text (
+                'This is Adding widget',
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }
