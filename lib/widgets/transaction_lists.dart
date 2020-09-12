@@ -22,7 +22,7 @@ class TransactionList extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10.0),
                     child: Text(
-                      '\$${tx.amount}',
+                      'Rs: ${tx.amount}',
                       style: TextStyle(
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold,
