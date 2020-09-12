@@ -22,7 +22,8 @@ class MyHomePage extends StatelessWidget {
       appBar: AppBar(
         title: Text('Expense'),
       ),
-      body: Column(
+      body: SingleChildScrollView(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         children: [
           Container(
@@ -41,6 +42,7 @@ class MyHomePage extends StatelessWidget {
           UserTransaction(),
         ],
       ),
+    ),
     );
   }
 }
