@@ -21,6 +21,9 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Expense'),
+        actions: [
+          IconButton(icon: Icon(Icons.add), onPressed: (){}),
+        ],
       ),
       body: ListView(
         children: [
@@ -39,6 +42,11 @@ class MyHomePage extends StatelessWidget {
           ),
           UserTransaction(),
         ],
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        onPressed: (){},
       ),
     );
   }
