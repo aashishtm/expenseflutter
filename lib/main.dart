@@ -3,6 +3,7 @@ import './widgets/new_transaction.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import './models/transaction.dart';
+import './widgets/chart.dart';
 
 void main() => runApp(MyApp());
 
@@ -29,19 +30,29 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
 
   final List<Transaction> _transactions = [
-    Transaction(
-      id:'T one',
-      title: 'My Fee',
-      amount: 1200.54,
-      date: DateTime.now(),
-    ),
-    Transaction(
-      id:'T two',
-      title: 'My Bank',
-      amount: 1000.54,
-      date: DateTime.now(),
-    ),
+    // Transaction(
+    //   id:'T one',
+    //   title: 'My Fee',
+    //   amount: 1200.54,
+    //   date: DateTime.now(),
+    // ),
+    // Transaction(
+    //   id:'T two',
+    //   title: 'My Bank',
+    //   amount: 1000.54,
+    //   date: DateTime.now(),
+    // ),
   ];
+
+  List<Transaction> get _recentTransaction{
+    return _transactions.where((tx){
+      return tx.date.isAfter(
+        DateTime.now().subtract(
+            Duration(days: 7)
+        ),
+      );
+    }).toList();
+  }
 
   void _addTransaction(String txTitle, double txAmount){
     final newTx = Transaction(
@@ -76,19 +87,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       body: ListView(
         children: [
-          Container(
-            width: double.infinity,
-            height: 100,
-            child: Card(
-              child: Text (
-                'This is Expense widget',
-                style: TextStyle(
-                  color: Colors.deepPurple,
-                  fontSize: 20.0,
-                ),
-              ),
-            ),
-          ),
+          Chart(_recentTransaction),
           TransactionList(_transactions),
         ],
       ),
